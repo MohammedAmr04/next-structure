@@ -1,4 +1,4 @@
-import CustomButton from "@/components/common/CustomButton";
+import SignInButton from "@/components/common/SignInButton";
 import {
   Card,
   CardContent,
@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getServerSession } from "next-auth";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 
 async function Page() {
@@ -49,9 +48,9 @@ async function Page() {
                 <CardDescription className="py-4 text-center font-medium">
                   No user is logged in. Please sign in to see your information.
                 </CardDescription>
-                <CustomButton onClick={() => signIn("github")}>
+                <SignInButton provider="github">
                   <span>Sign in with GitHub</span>
-                </CustomButton>
+                </SignInButton>
               </>
             )}
           </CardHeader>
