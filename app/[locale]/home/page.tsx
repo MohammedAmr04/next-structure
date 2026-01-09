@@ -12,8 +12,10 @@ import { Input } from "@/components/ui/input";
 import { ContactFormData, contactFormSchema } from "@/lib/schemas/form.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 function Page() {
+  const t = useTranslations();
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema()),
     defaultValues: {
@@ -39,9 +41,9 @@ function Page() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{t("form.name")}</FormLabel>
               <FormControl>
-                <Input placeholder="Name" {...field} />
+                <Input placeholder={t("form.namePlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -54,9 +56,9 @@ function Page() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{t("form.email")}</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} />
+                <Input placeholder={t("form.emailPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -69,9 +71,9 @@ function Page() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{t("form.message")}</FormLabel>
               <FormControl>
-                <Input placeholder="Your message" {...field} />
+                <Input placeholder={t("form.messagePlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -79,7 +81,7 @@ function Page() {
         />
 
         <CustomButton type="submit" className="w-full">
-          Submit
+          {t("form.submit")}
         </CustomButton>
       </form>
     </Form>

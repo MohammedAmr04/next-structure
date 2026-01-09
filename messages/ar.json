@@ -1,0 +1,31 @@
+{
+  "common": {
+    "title": "هيكل نيكست",
+    "description": "مثال لتطبيق Next.js مع دعم الترجمة",
+    "appName": "نيكست",
+    "user": "مستخدم",
+    "avatarAlt": "الصورة",
+    "userInformation": "معلومات المستخدم",
+    "noUserDescription": "لا يوجد مستخدم مسجل الدخول. الرجاء تسجيل الدخول لعرض معلوماتك."
+  },
+  "auth": {
+    "signInWithGitHub": "تسجيل الدخول عبر GitHub"
+  },
+  "form": {
+    "name": "الاسم",
+    "namePlaceholder": "الاسم",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "messagePlaceholder": "رسالتك",
+    "submit": "إرسال"
+  },
+  "test": {
+    "minPrice": "الحد الأدنى للسعر",
+    "maxPrice": "الحد الأقصى للسعر",
+    "fetchProducts": "جلب المنتجات",
+    "loading": "جارٍ التحميل...",
+    "loadingProducts": "جارٍ تحميل المنتجات...",
+    "noProducts": "لا توجد منتجات. حاول تعديل عوامل التصفية."
+  }
+}

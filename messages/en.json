@@ -1,0 +1,31 @@
+{
+  "common": {
+    "title": "Next Structure",
+    "description": "A Next.js App Router example with i18n",
+    "appName": "Next",
+    "user": "User",
+    "avatarAlt": "Avatar",
+    "userInformation": "User Information",
+    "noUserDescription": "No user is logged in. Please sign in to see your information."
+  },
+  "auth": {
+    "signInWithGitHub": "Sign in with GitHub"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Name",
+    "email": "Email",
+    "emailPlaceholder": "Email",
+    "message": "Message",
+    "messagePlaceholder": "Your message",
+    "submit": "Submit"
+  },
+  "test": {
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "fetchProducts": "Fetch products",
+    "loading": "Loading...",
+    "loadingProducts": "Loading products...",
+    "noProducts": "No products found. Try adjusting the filters."
+  }
+}

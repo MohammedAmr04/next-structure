@@ -8,22 +8,24 @@ import {
 } from "@/components/ui/card";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 async function Page() {
   const session = await getServerSession();
+  const t = await getTranslations("common");
 
   return (
     <>
       <header className="w-full bg-gray-100 shadow-md px-6 py-3 flex justify-between items-center">
-        <div className="text-xl font-bold text-gray-800">Next</div>
+        <div className="text-xl font-bold text-gray-800">{t("appName")}</div>
 
         <div className="flex items-center space-x-2">
-          <span className="text-gray-600">{session?.user?.name || "User"}</span>
+          <span className="text-gray-600">{session?.user?.name || t("user")}</span>
           <Image
             width={60}
             height={60}
             src={session?.user?.image || "/avatar-placeholder.png"}
-            alt="Avatar"
+            alt={t("avatarAlt")}
             className="w-10 h-10 rounded-full object-cover"
           />
         </div>
@@ -33,9 +35,7 @@ async function Page() {
       <main className="h-screen flex items-center justify-center">
         <Card className="min-w-sm mx-auto">
           <CardHeader>
-            <CardTitle className="text-center text-2xl">
-              User Information
-            </CardTitle>
+            <CardTitle className="text-center text-2xl">{t("userInformation")}</CardTitle>
             {session && (
               <CardContent>
                 <p>{session?.user.id}</p>
@@ -46,11 +46,9 @@ async function Page() {
             {!session && (
               <>
                 <CardDescription className="py-4 text-center font-medium">
-                  No user is logged in. Please sign in to see your information.
+                  {t("noUserDescription")}
                 </CardDescription>
-                <SignInButton provider="github">
-                  <span>Sign in with GitHub</span>
-                </SignInButton>
+                <SignInButton provider="github" />
               </>
             )}
           </CardHeader>

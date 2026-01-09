@@ -5,9 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import getTest from "@/lib/api/get-test";
 import { Product } from "@/lib/types/types";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function Page() {
   const [state, action, isPending] = useActionState(getTest, []);
+  const t = useTranslations("test");
+  const locale = useLocale();
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
@@ -17,17 +20,17 @@ export default function Page() {
           <Input
             name="minPrice"
             type="number"
-            placeholder="Min price"
+            placeholder={t("minPrice")}
             className="sm:w-40"
           />
           <Input
             name="maxPrice"
             type="number"
-            placeholder="Max price"
+            placeholder={t("maxPrice")}
             className="sm:w-40"
           />
           <Button type="submit" disabled={isPending} className="sm:ml-auto">
-            {isPending ? "Loading..." : "Fetch products"}
+            {isPending ? t("loading") : t("fetchProducts")}
           </Button>
         </form>
       </div>
@@ -35,13 +38,13 @@ export default function Page() {
       {/* States */}
       {isPending && (
         <p className="text-center text-sm text-muted-foreground">
-          Loading products...
+          {t("loadingProducts")}
         </p>
       )}
 
       {!isPending && state.length === 0 && (
         <p className="text-center text-sm text-muted-foreground">
-          No products found. Try adjusting the filters.
+          {t("noProducts")}
         </p>
       )}
 
@@ -54,11 +57,11 @@ export default function Page() {
           >
             {/* Content */}
             <h3 className="line-clamp-1 text-lg font-semibold">
-              {product.title.en}
+              {product.title[locale as keyof typeof product.title]}
             </h3>
 
             <p className="mt-1 text-sm text-muted-foreground">
-              {product.category.en}
+              {product.category[locale as keyof typeof product.category]}
             </p>
 
             <div className="mt-3 flex items-center justify-between">
