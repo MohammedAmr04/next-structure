@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Providers from "@/components/providers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import NavgationHeader from "./_components/NavagationHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,12 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  const { locale } = params;
+export async function generateMetadata() {
   const t = await getTranslations("common");
   return {
     title: t("title"),
@@ -53,7 +49,10 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <NavgationHeader />
+          {children}
+        </Providers>
       </body>
     </html>
   );

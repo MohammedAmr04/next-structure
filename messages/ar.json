@@ -5,8 +5,14 @@
     "appName": "نيكست",
     "user": "مستخدم",
     "avatarAlt": "الصورة",
+    "logout": "تسجيل الخروج",
     "userInformation": "معلومات المستخدم",
     "noUserDescription": "لا يوجد مستخدم مسجل الدخول. الرجاء تسجيل الدخول لعرض معلوماتك."
+  },
+  "nav": {
+    "home": "الصفحة الرئيسية",
+    "contact": "اتصل",
+    "test": "اختبار"
   },
   "auth": {
     "signInWithGitHub": "تسجيل الدخول عبر GitHub"

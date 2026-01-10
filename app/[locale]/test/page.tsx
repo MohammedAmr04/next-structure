@@ -10,7 +10,7 @@ import { useTranslations, useLocale } from "next-intl";
 export default function Page() {
   const [state, action, isPending] = useActionState(getTest, []);
   const t = useTranslations("test");
-  const locale = useLocale();
+  const locale = useLocale() as "en" | "ar";
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
@@ -57,11 +57,11 @@ export default function Page() {
           >
             {/* Content */}
             <h3 className="line-clamp-1 text-lg font-semibold">
-              {product.title[locale as keyof typeof product.title]}
+              {product.title[locale]}
             </h3>
 
             <p className="mt-1 text-sm text-muted-foreground">
-              {product.category[locale as keyof typeof product.category]}
+              {product.category[locale]}
             </p>
 
             <div className="mt-3 flex items-center justify-between">

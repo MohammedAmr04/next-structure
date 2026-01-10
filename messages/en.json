@@ -5,8 +5,14 @@
     "appName": "Next",
     "user": "User",
     "avatarAlt": "Avatar",
+    "logout": "Sign out",
     "userInformation": "User Information",
     "noUserDescription": "No user is logged in. Please sign in to see your information."
+  },
+  "nav": {
+    "home": "Home",
+    "contact": "Contact",
+    "test": "Test"
   },
   "auth": {
     "signInWithGitHub": "Sign in with GitHub"
