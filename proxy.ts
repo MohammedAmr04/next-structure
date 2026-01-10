@@ -1,7 +1,28 @@
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
+import { NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export default async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  });
+
+  const isHomePage = pathname.endsWith("/home");
+
+  if (!token && isHomePage) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    return NextResponse.redirect(url);
+  }
+
+  return intlMiddleware(request);
+}
 
 export const config = {
   // Match all pathnames except for
